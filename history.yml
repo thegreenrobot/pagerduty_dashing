@@ -1,0 +1,63 @@
+---
+buzzwords: ! 'data: {"items":[{"label":"Streamlininess","value":16},{"label":"Synergy","value":21},{"label":"Pivoting","value":23},{"label":"Enterprise","value":7},{"label":"Exit
+  strategy","value":18},{"label":"Leverage","value":1},{"label":"Paradigm shift","value":13},{"label":"Web
+  2.0","value":0},{"label":"Turn-key","value":1}],"id":"buzzwords","updatedAt":1384465148}
+
+
+'
+convergence: ! 'data: {"points":[{"x":15641,"y":21},{"x":15642,"y":49},{"x":15643,"y":45},{"x":15644,"y":47},{"x":15645,"y":37},{"x":15646,"y":38},{"x":15647,"y":2},{"x":15648,"y":23},{"x":15649,"y":34},{"x":15650,"y":24}],"id":"convergence","updatedAt":1384465148}
+
+
+'
+valuation: ! 'data: {"current":66,"last":80,"id":"valuation","updatedAt":1384465148}
+
+
+'
+karma: ! 'data: {"current":122053,"last":47889,"id":"karma","updatedAt":1384465148}
+
+
+'
+synergy: ! 'data: {"value":90,"id":"synergy","updatedAt":1384465148}
+
+
+'
+staging-triggered: ! 'data: {"value":0,"id":"staging-triggered","updatedAt":1389561502}
+
+
+'
+staging-acknowledged: ! 'data: {"value":0,"id":"staging-acknowledged","updatedAt":1389561502}
+
+
+'
+preprod-triggered: ! 'data: {"value":0,"id":"preprod-triggered","updatedAt":1389561503}
+
+
+'
+preprod-acknowledged: ! 'data: {"value":0,"id":"preprod-acknowledged","updatedAt":1389561503}
+
+
+'
+production-triggered: ! 'data: {"value":0,"id":"production-triggered","updatedAt":1389561504}
+
+
+'
+production-acknowledged: ! 'data: {"value":0,"id":"production-acknowledged","updatedAt":1389561504}
+
+
+'
+newrelic-triggered: ! 'data: {"value":0,"id":"newrelic-triggered","updatedAt":1389561504}
+
+
+'
+newrelic-acknowledged: ! 'data: {"value":0,"id":"newrelic-acknowledged","updatedAt":1389561504}
+
+
+'
+triggered: ! 'data: {"value":0,"id":"triggered","updatedAt":1384318764}
+
+
+'
+acknowledged: ! 'data: {"value":0,"id":"acknowledged","updatedAt":1384318764}
+
+
+'

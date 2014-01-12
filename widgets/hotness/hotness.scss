@@ -1,0 +1,52 @@
+// ----------------------------------------------------------------------------
+// Mixins
+// ----------------------------------------------------------------------------
+@mixin transition($transition-property, $transition-time, $method) {
+  -webkit-transition: $transition-property $transition-time $method;
+  -moz-transition: $transition-property $transition-time $method;
+  -o-transition: $transition-property $transition-time $method;
+  transition: $transition-property $transition-time $method;
+}
+
+// ----------------------------------------------------------------------------
+// Sass declarations
+// ----------------------------------------------------------------------------
+$background-color: #000000;
+$value-color: #FFFFFF;
+$title-color: rgba(255, 255, 255, 0.7);
+$updated-at-color: rgba(0, 0, 0, 0.3);
+
+// ----------------------------------------------------------------------------
+// Widget-hotness styles
+// ----------------------------------------------------------------------------
+.widget-hotness {
+
+  background-color: $background-color;
+  @include transition(background-color, 1s, linear);
+
+  .title {
+    color: $title-color;
+  }
+
+  .value {
+    color: $value-color;
+  }
+
+  .updated-at {
+    color: $updated-at-color;
+  }
+
+}
+
+.hotness0 { background-color: #00C176; }
+.hotness1 { background-color: #88C100; }
+.hotness2 { background-color: #FABE28; }
+.hotness3 { background-color: #FF8A00; }
+.hotness4 { background-color: #FF003C; }
+
+// // More colour-blind friendly palette
+// .hotness0 { background-color: #046D8B; }
+// .hotness1 { background-color: #309292; }
+// .hotness2 { background-color: #2FB8AC; }
+// .hotness3 { background-color: #93A42A; }
+// .hotness4 { background-color: #ECBE13; }
