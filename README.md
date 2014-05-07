@@ -34,7 +34,7 @@ Sample lib/secrets.json
         }
     }
 
-Sample dashboards/oncall.rb
+Sample dashboards/oncall.erb
 -------------------
 Note: the data-id for these widgets will look like "schedulename-name". That extra "name" is for oncall.rb to put in the on-call's name.
 
@@ -43,18 +43,18 @@ Note: the data-id for these widgets will look like "schedulename-name". That ext
   <ul>
 
     <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
-      <div data-id="oncall-name" data-view="Text" data-title="Monitorama Rotation" data-moreinfo="Fix all the incidents!"</div>
+      <div data-id="oncall-name" data-view="Text" data-title="On-Call Rotation" data-moreinfo="Fix all the incidents!"</div>
     </li>    
 
      <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
-      <div data-id="firefighter-name" data-view="Text" data-title="Monitorama Rotation" data-moreinfo="Fix all the incidents!"</div>
+      <div data-id="firefighter-name" data-view="Text" data-title="Firefighter Rotation" data-moreinfo="Srsly. Fix the incidents."</div>
     </li>   
  
   </ul>
 </div>
 ```
 
-Sample dashboards/incidents.rb
+Sample dashboards/incidents.erb
 -------------------
 Note: the data-id for these widgets will look like "servicename-triggered" or "servicename-acknowledged"
 
