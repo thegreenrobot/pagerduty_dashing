@@ -44,11 +44,11 @@ Note: the data-id for these widgets will look like "schedulename-name". That ext
 
     <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
       <div data-id="oncall-name" data-view="Text" data-title="On-Call Rotation" data-moreinfo="Fix all the incidents!"</div>
-    </li>    
+    </li>
 
      <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
       <div data-id="firefighter-name" data-view="Text" data-title="Firefighter Rotation" data-moreinfo="Srsly. Fix the incidents."</div>
-    </li>   
+    </li>
  
   </ul>
 </div>
@@ -60,7 +60,6 @@ Note: the data-id for these widgets will look like "servicename-triggered" or "s
 
 ```
 <div class="gridster">
-
   <ul>
 
     <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
@@ -84,6 +83,20 @@ Note: the data-id for these widgets will look like "servicename-triggered" or "s
 </div>
 ```
 
+Sample dashboards/statistics.erb
+-------------------
+Note: Adjust the cool and warm numbers to your liking.
 
+```
+<div class="gridster">
+  <ul>
+
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-id="daily_incidents" data-view="Hotness" data-title="Daily Incidents" data-cool="5" data-warm="15"></div>
+    </li>
+
+  </ul>
+</div>
+```
 
 [hotness]: https://github.com/gottfrois/dashing-hotness
