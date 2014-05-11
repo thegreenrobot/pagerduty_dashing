@@ -1,20 +1,17 @@
 require 'faraday'
 require 'json'
+# make sure your secrets.json has an "escalation_policy":"blahblah" entry
 
 data_file = './lib/secrets.json'
 parsed_data = JSON.parse( IO.read( data_file ))
 
 url = parsed_data['url']
 api_key = parsed_data['api_key']
+escalation_policy = parsed_data['escalation_policy']
 
-schedules = {}
+oncalls = {}
 
-parsed_data['schedules'].each do |key, value|
-  schedules[key] = value
-end
-
-SCHEDULER.every '30s' do
-  schedules.each do |key, value|
+SCHEDULER.every '5s' do
     conn = Faraday.new(:url => "#{url}") do |faraday|
       faraday.request :url_encoded
       faraday.adapter Faraday.default_adapter
@@ -22,17 +19,20 @@ SCHEDULER.every '30s' do
       faraday.headers['Authorization'] = "Token token=#{api_key}"
       faraday.params['since'] = Time.now.utc.iso8601()
       faraday.params['until'] = (Time.now.utc + 60).iso8601()
-    end
+   end
 
-  response = conn.get "/api/v1/schedules/#{value}"
+  response = conn.get "/api/v1/escalation_policies/#{escalation_policy}/on_call"
   if response.status == 200
-    schedule_result = JSON.parse(response.body)
-    user_name = schedule_result['schedule']['schedule_layers'][0]['rendered_schedule_entries'][0]['user']['name']
+    oncall_result = JSON.parse(response.body)
+    #Note: this is currently broken for group alerting. Need to make it just look for the first entry where level:1, then where level:2
+    primary = oncall_result['escalation_policy']['on_call'][0]['user']['name']
+    secondary = oncall_result['escalation_policy']['on_call'][1]['user']['name']
   else
     user_name = 'John Doe'
   end
 
-  send_event("#{key}-name", { text: user_name})
+  send_event("primary-name", { text: primary})
+  send_event("backup-name", { text: secondary})
 
-  end
 end
+
