@@ -92,8 +92,20 @@ Note: Adjust the cool and warm numbers to your liking.
   <ul>
 
     <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-id="hourly_incidents" data-view="Hotness" data-title="Hourly Incidents" data-cool="0" data-warm="5"></div>
+    </li>
+
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
       <div data-id="daily_incidents" data-view="Hotness" data-title="Daily Incidents" data-cool="5" data-warm="15"></div>
     </li>
+
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-id="weekly_incidents" data-view="Hotness" data-title="Weekly Incidents" data-cool="5" data-warm="15"></div>
+    </li>
+
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-id="monthly_incidents" data-view="Hotness" data-title="Monthly Incidents" data-cool="100" data-warm="300"></div>
+    </li>    
 
   </ul>
 </div>
