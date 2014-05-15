@@ -14,8 +14,8 @@ SCHEDULER.every '30s' do
     faraday.adapter Faraday.default_adapter
     faraday.headers['Content-type'] = 'application/json'
     faraday.headers['Authorization'] = "Token token=#{api_key}"
-    faraday.params['since'] = Chronic.parse('yesterday at midnight')
-    faraday.params['until'] = Chronic.parse('today at midnight')
+    faraday.params['since'] = Chronic.parse('last sunday at midnight')
+    faraday.params['until'] = Chronic.parse('now')
     faraday.params['status'] = 'resolved'
   end
 
@@ -23,11 +23,11 @@ SCHEDULER.every '30s' do
   
   if response.status == 200
     response_result = JSON.parse(response.body)
-    daily_incidents = response_result['total']
+    weekly_incidents = response_result['total']
   else
-    daily_incidents = 0
+    weekly_incidents = 0
   end
 
-  send_event('daily_incidents', { value: daily_incidents})
+  send_event('weekly_incidents', { value: weekly_incidents})
 
 end
