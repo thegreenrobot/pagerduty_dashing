@@ -36,7 +36,8 @@ Sample lib/secrets.json
 
 Sample dashboards/oncall.erb
 -------------------
-Note: the data-id for these widgets will look like "schedulename-name". That extra "name" is for oncall.rb to put in the on-call's name.
+* Purpose: Each widget depicts a specific schedule and who's on-call.
+* Note: the data-id for these widgets will look like "schedulename-name". That extra "name" is for oncall.rb to put in the on-call's name.
 
 ```
 <div class="gridster">
@@ -56,7 +57,8 @@ Note: the data-id for these widgets will look like "schedulename-name". That ext
 
 Sample dashboards/incidents.erb
 -------------------
-Note: the data-id for these widgets will look like "servicename-triggered" or "servicename-acknowledged"
+* Purpose: Each widget depicts the count of Triggered or Acknowledged incidents for a specific service.
+* Note: The data-id for these widgets will look like "servicename-triggered" or "servicename-acknowledged".  Adjust the cool and warm numbers to your liking.
 
 ```
 <div class="gridster">
@@ -85,7 +87,8 @@ Note: the data-id for these widgets will look like "servicename-triggered" or "s
 
 Sample dashboards/statistics.erb
 -------------------
-Note: Adjust the cool and warm numbers to your liking.
+* Purpose: The hourly/daily/weekly/monthly widgets show the number resolved incidents for all services.  The MTR widgets show the mean time to resolution for all incidents for each time period.
+* Note: Adjust the cool and warm numbers to your liking.
 
 ```
 <div class="gridster">
@@ -105,7 +108,23 @@ Note: Adjust the cool and warm numbers to your liking.
 
     <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
       <div data-id="monthly_incidents" data-view="Hotness" data-title="Monthly Incidents" data-cool="100" data-warm="300"></div>
-    </li>    
+    </li>
+
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-id="hourly_incidents_mtr" data-view="Hotness" data-title="Hourly MTR" data-cool="5" data-warm="15"></div>
+    </li>
+
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-id="daily_incidents_mtr" data-view="Hotness" data-title="Daily MTR" data-cool="5" data-warm="15"></div>
+    </li>
+
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-id="weekly_incidents_mtr" data-view="Hotness" data-title="Weekly MTR" data-cool="5" data-warm="15"></div>
+    </li>
+
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-id="monthly_incidents_mtr" data-view="Hotness" data-title="Monthly MTR" data-cool="5" data-warm="15"></div>
+    </li>
 
   </ul>
 </div>
