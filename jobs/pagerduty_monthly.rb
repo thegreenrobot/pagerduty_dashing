@@ -8,10 +8,10 @@ parsed_data = JSON.parse( IO.read( data_file ))
 url = parsed_data['url']
 api_key = parsed_data['api_key']
 
-month = Time.now.month
-year = Time.now.year
+month = Time.now.strftime("%m")
+year = Time.now.strftime("%Y")
 
-SCHEDULER.every '30s' do
+SCHEDULER.every '60s' do
   conn = Faraday.new(:url => "#{url}") do |faraday|
     faraday.request :url_encoded
     faraday.adapter Faraday.default_adapter
