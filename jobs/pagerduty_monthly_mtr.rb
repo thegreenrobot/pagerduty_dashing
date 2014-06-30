@@ -13,8 +13,8 @@ secrets_data = JSON.parse( IO.read( secrets_file ))
 
 # Call the PagerDuty API and get the incidents
 def monthly_pd_query(offset)
-  month = Time.now.month
-  year = Time.now.year
+  month = Time.now.strftime("%m")
+  year = Time.now.strftime("%Y")
   conn = Faraday.new(:url => "#{@url}") do |faraday|
     faraday.request :url_encoded
     faraday.adapter Faraday.default_adapter
@@ -40,12 +40,17 @@ end
 
 # Caclulate the mtr (mean time to resolution) and format it
 def calc_monthly_mtr()
-  mtr = @monthly_resolution_times.inject{ |sum, el| sum + el }.to_f / @monthly_resolution_times.size
-  mtr = (mtr / 60).round(3)
-  return mtr
+  if @monthly_resolution_times.size == 0
+    mtr = 0
+    return mtr
+  else
+    mtr = @monthly_resolution_times.inject{ |sum, el| sum + el }.to_f / @monthly_resolution_times.size
+    mtr = (mtr / 60).round(3)
+    return mtr
+  end
 end
 
-SCHEDULER.every '30s' do
+SCHEDULER.every '60s' do
 
   while @monthly_resolution_times.length <= @monthly_total_incidents do
 

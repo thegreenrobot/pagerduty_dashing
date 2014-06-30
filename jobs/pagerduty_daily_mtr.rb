@@ -38,17 +38,17 @@ end
 
 # Caclulate the mtr (mean time to resolution) and format it
 def calc_daily_mtr()
-  mtr = @daily_resolution_times.inject{ |sum, el| sum + el }.to_f / @daily_resolution_times.size
-  mtr = (mtr / 60).round(3)
-  
-  if mtr.nan?
-    return 0.0
+  if @daily_resolution_times.size == 0
+    mtr = 0
+    return mtr
   else
+    mtr = @daily_resolution_times.inject{ |sum, el| sum + el }.to_f / @daily_resolution_times.size
+    mtr = (mtr / 60).round(3)
     return mtr
   end
 end
 
-SCHEDULER.every '20s' do
+SCHEDULER.every '60s' do
 
   while @daily_resolution_times.length <= @daily_total_incidents do
 

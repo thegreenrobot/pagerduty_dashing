@@ -13,7 +13,7 @@ secrets_data = JSON.parse( IO.read( secrets_file ))
 
 # Call the PagerDuty API and get the incidents
 def hourly_pd_query(offset)
-  hour = Time.now.hour
+  hour = Time.now.strftime("%H")
   conn = Faraday.new(:url => "#{@url}") do |faraday|
     faraday.request :url_encoded
     faraday.adapter Faraday.default_adapter
@@ -39,17 +39,17 @@ end
 
 # Caclulate the mtr (mean time to resolution) and format it
 def calc_hourly_mtr()
-  mtr = @hourly_resolution_times.inject{ |sum, el| sum + el }.to_f / @hourly_resolution_times.size
-  mtr = (mtr / 60).round(3)
-  
-  if mtr.is_a? Fixnum
+  if @hourly_resolution_times.size == 0
+    mtr = 0
     return mtr
   else
-    return 0.0
+    mtr = @hourly_resolution_times.inject{ |sum, el| sum + el }.to_f / @hourly_resolution_times.size rescue 0
+    mtr = (mtr / 60).round(3)
+    return mtr
   end
 end
 
-SCHEDULER.every '30s' do
+SCHEDULER.every '60s' do
 
   while @hourly_resolution_times.length <= @hourly_total_incidents do
 
@@ -81,7 +81,7 @@ SCHEDULER.every '30s' do
     end
   end
 
-  mtr = calc_hourly_mtr()
-  send_event('hourly_incidents_mtr', { value: mtr})
+  hourly_mtr = calc_hourly_mtr()
+  send_event('hourly_incidents_mtr', { value: hourly_mtr})
 
 end
