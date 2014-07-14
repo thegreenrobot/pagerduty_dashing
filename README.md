@@ -13,7 +13,7 @@ Getting Started
 1. Clone the repo
 2. Bundle install
 3. Create a new directory in the repo root called lib
-4. Create a secrets.json file in the lib directory with your PagerDuty information
+4. Update the sample secrets.json file in the lib directory with your PagerDuty information
 5. Match the data-id in the widgets in /dashboards with the names of your services and schedules from the secrets file.
 6. Start dashing!
 
