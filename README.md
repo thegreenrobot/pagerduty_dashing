@@ -85,49 +85,4 @@ Sample dashboards/incidents.erb
 </div>
 ```
 
-Sample dashboards/statistics.erb
--------------------
-* Purpose: The hourly/daily/weekly/monthly widgets show the number resolved incidents for all services.  The MTR widgets show the mean time to resolution for all incidents for each time period.
-* Note: Adjust the cool and warm numbers to your liking.
-
-```
-<div class="gridster">
-  <ul>
-
-    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
-      <div data-id="hourly_incidents" data-view="Hotness" data-title="Hourly Incidents" data-cool="0" data-warm="5"></div>
-    </li>
-
-    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
-      <div data-id="daily_incidents" data-view="Hotness" data-title="Daily Incidents" data-cool="5" data-warm="15"></div>
-    </li>
-
-    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
-      <div data-id="weekly_incidents" data-view="Hotness" data-title="Weekly Incidents" data-cool="5" data-warm="15"></div>
-    </li>
-
-    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
-      <div data-id="monthly_incidents" data-view="Hotness" data-title="Monthly Incidents" data-cool="100" data-warm="300"></div>
-    </li>
-
-    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
-      <div data-id="hourly_incidents_mtr" data-view="Hotness" data-title="Hourly MTR" data-cool="5" data-warm="15"></div>
-    </li>
-
-    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
-      <div data-id="daily_incidents_mtr" data-view="Hotness" data-title="Daily MTR" data-cool="5" data-warm="15"></div>
-    </li>
-
-    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
-      <div data-id="weekly_incidents_mtr" data-view="Hotness" data-title="Weekly MTR" data-cool="5" data-warm="15"></div>
-    </li>
-
-    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
-      <div data-id="monthly_incidents_mtr" data-view="Hotness" data-title="Monthly MTR" data-cool="5" data-warm="15"></div>
-    </li>
-
-  </ul>
-</div>
-```
-
 [hotness]: https://github.com/gottfrois/dashing-hotness
