@@ -1,19 +1,19 @@
 require 'faraday'
 require 'json'
 
-triggered = 0
-acknowledged = 0
+url = ENV['PAGERDUTY_URL']
+api_key = ENV['API_KEY']
+env_services = ENV['SERVICES']
+parsed_data = JSON.parse(env_services)
 
-data_file = './lib/secrets.json'
-parsed_data = JSON.parse( IO.read( data_file ))
-
-url = parsed_data['url']
-api_key = parsed_data['api_key']
 services = {}
 
 parsed_data['services'].each do |key, value|
   services[key] = value
 end
+
+triggered = 0
+acknowledged = 0
 
 SCHEDULER.every '30s' do
   services.each do |key, value|

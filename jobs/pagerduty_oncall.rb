@@ -1,11 +1,10 @@
 require 'faraday'
 require 'json'
 
-data_file = './lib/secrets.json'
-parsed_data = JSON.parse( IO.read( data_file ))
-
-url = parsed_data['url']
-api_key = parsed_data['api_key']
+url = ENV['PAGERDUTY_URL']
+api_key = ENV['API_KEY']
+env_schedules = ENV['SCHEDULES']
+parsed_data = JSON.parse(env_schedules)
 
 schedules = {}
 
