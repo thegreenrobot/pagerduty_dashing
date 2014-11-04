@@ -28,7 +28,10 @@ The easiest way to get started is to use Heroku button above to launch your dash
 FAQ
 ====
 ### Where can I see what the IDs are for my services/schedules?
-Clicking on a Service/Schedule within your PagerDuty URL will show you the ID in the URL.
+Clicking on a Service/Schedule in PagerDuty will show you the ID in the URL.
+
+### Why do I need to format my Services/Schedules like that?
+The Services/Schedules need to be in JSON format.  In order for Heroku to accept them, they need to contain no line breaks.
 
 [dashing]: http://shopify.github.io/dashing/
 [hotness]: https://github.com/gottfrois/dashing-hotness
