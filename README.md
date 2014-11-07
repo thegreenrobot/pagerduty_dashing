@@ -21,9 +21,9 @@ The easiest way to get started is to use Heroku button above to launch your dash
 | Environment Variable | Example |
 | :----------------- |:-----------------|
 | PAGERDUTY_URL | https://yoursubdomain.pagerduty.com |
-| API_KEY | Your api key (this can be a read only key) |
-| SERVICES | {"services": { "staging": "ABC1234","preprod": "QAZ4567","production": "EDC4321"}} |
-| SCHEDULES | {"schedules": { "oncall": "ABC1234","firefighter": "QAZ4567"}} | 
+| PAGERDUTY_APIKEY | Your api key (this can be a read only key) |
+| PAGERDUTY_SERVICES | {"services": { "staging": "ABC1234","preprod": "QAZ4567","production": "EDC4321"}} |
+| PAGERDUTY_SCHEDULES | {"schedules": { "oncall": "ABC1234","firefighter": "QAZ4567"}} | 
 
 FAQ
 ====
