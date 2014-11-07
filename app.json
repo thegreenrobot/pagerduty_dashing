@@ -8,8 +8,8 @@
     "success_url": "/pagerduty",
     "env": {
         "PAGERDUTY_URL": "insert_your_pagerduty_url_here",
-        "API_KEY": "insert_your_pagerduty_api_key_here",
-        "SERVICES": "insert_your_services_here_in_json_format",
-        "SCHEDULES": "insert_your_schedules_here_in_json_format"
+        "PAGERDUTY_APIKEY": "insert_your_pagerduty_api_key_here",
+        "PAGERDUTY_SERVICES": "insert_your_services_here_in_json_format",
+        "PAGERDUTY_SCHEDULES": "insert_your_schedules_here_in_json_format"
     }
 }
