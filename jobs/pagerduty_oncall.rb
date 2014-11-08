@@ -2,8 +2,8 @@ require 'faraday'
 require 'json'
 
 url = ENV['PAGERDUTY_URL']
-api_key = ENV['API_KEY']
-env_schedules = ENV['SCHEDULES']
+api_key = ENV['PAGERDUTY_APIKEY']
+env_schedules = ENV['PAGERDUTY_SCHEDULES']
 parsed_data = JSON.parse(env_schedules)
 
 schedules = {}

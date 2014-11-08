@@ -2,8 +2,8 @@ require 'faraday'
 require 'json'
 
 url = ENV['PAGERDUTY_URL']
-api_key = ENV['API_KEY']
-env_services = ENV['SERVICES']
+api_key = ENV['PAGERDUTY_APIKEY']
+env_services = ENV['PAGERDUTY_SERVICES']
 parsed_data = JSON.parse(env_services)
 
 services = {}
