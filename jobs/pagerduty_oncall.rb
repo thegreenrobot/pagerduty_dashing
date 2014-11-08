@@ -1,37 +1,43 @@
 require 'faraday'
 require 'json'
+require 'pp'
+# make sure your secrets.json has an "escalation_policy":"blahblah" entry
 
 url = ENV['PAGERDUTY_URL']
 api_key = ENV['PAGERDUTY_APIKEY']
 env_schedules = ENV['PAGERDUTY_SCHEDULES']
 parsed_data = JSON.parse(env_schedules)
 
-schedules = {}
+# empty array of oncalls
+oncall = {}
 
-parsed_data['schedules'].each do |key, value|
-  schedules[key] = value
+# for each ep....
+parsed_data['escalation_policies'].each do |key, value|
+  oncall[key] = value
 end
 
-SCHEDULER.every '30s' do
-  schedules.each do |key, value|
+SCHEDULER.every '5s' do
+  oncall.each do |key,value|
     conn = Faraday.new(:url => "#{url}") do |faraday|
       faraday.request :url_encoded
       faraday.adapter Faraday.default_adapter
       faraday.headers['Content-type'] = 'application/json'
       faraday.headers['Authorization'] = "Token token=#{api_key}"
-      faraday.params['since'] = Time.now.utc.iso8601()
-      faraday.params['until'] = (Time.now.utc + 60).iso8601()
-    end
+   end
 
-  response = conn.get "/api/v1/schedules/#{value}"
+  response = conn.get "/api/v1/escalation_policies/#{value}/on_call"
+  pp(response)
   if response.status == 200
-    schedule_result = JSON.parse(response.body)
-    user_name = schedule_result['schedule']['schedule_layers'][0]['rendered_schedule_entries'][0]['user']['name']
+    oncall_result = JSON.parse(response.body)
+    #Note: this is currently broken for group alerting. Need to make it just look for the first entry where level:1, then where level:2
+    user_name = oncall_result['escalation_policy']['on_call'][0]['user']['name']
   else
     user_name = 'John Doe'
   end
 
   send_event("#{key}-name", { text: user_name})
-
   end
+
+
+
 end
