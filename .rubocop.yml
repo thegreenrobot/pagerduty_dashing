@@ -1,0 +1,4 @@
+# This is the configuration used to check the rubocop source code.
+
+Metrics/LineLength:
+  Enabled: false
