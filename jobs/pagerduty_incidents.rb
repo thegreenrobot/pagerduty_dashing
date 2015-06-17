@@ -17,8 +17,7 @@ acknowledged = 0
 
 SCHEDULER.every '30s' do
   services.each do |key, value|
-
-    conn = Faraday.new(:url => "#{url}") do |faraday|
+    conn = Faraday.new(url: "#{url}") do |faraday|
       faraday.request :url_encoded
       faraday.adapter Faraday.default_adapter
       faraday.headers['Content-type'] = 'application/json'
@@ -28,10 +27,10 @@ SCHEDULER.every '30s' do
     response = conn.get "/api/v1/services/#{value}"
     json = JSON.parse(response.body)
 
-    triggered = json["service"]["incident_counts"]["triggered"]
-    acknowledged = json["service"]["incident_counts"]["acknowledged"]
+    triggered = json['service']['incident_counts']['triggered']
+    acknowledged = json['service']['incident_counts']['acknowledged']
 
-    send_event("#{key}-triggered", { value: triggered})
-    send_event("#{key}-acknowledged", { value: acknowledged})
+    send_event("#{key}-triggered", value: triggered)
+    send_event("#{key}-acknowledged", value: acknowledged)
   end
 end
