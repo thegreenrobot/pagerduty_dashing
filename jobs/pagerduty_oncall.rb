@@ -23,10 +23,10 @@ SCHEDULER.every '30s' do
       faraday.params['until'] = (Time.now.utc + 60).iso8601
     end
 
-    response = conn.get "/api/v1/schedules/#{value}"
+    response = conn.get "/api/v1/schedules/#{value}/entries"
     if response.status == 200
       schedule_result = JSON.parse(response.body)
-      user_name = schedule_result['schedule']['schedule_layers'][0]['rendered_schedule_entries'][0]['user']['name']
+      user_name = schedule_result['entries'][0]['user']['name']
     else
       user_name = 'John Doe'
     end
